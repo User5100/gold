@@ -14,9 +14,9 @@ const Feed = props => (
 )
 
 Feed.propTypes = {
-	title: array,
-	pubDate: array,
-	description: array
+  title: array,
+  pubDate: array,
+  description: array
 }
 
 export default Feed

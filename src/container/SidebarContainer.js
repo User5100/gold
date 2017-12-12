@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { withRouter } from "react-router-dom"
 import styled from 'styled-components'
 import Sidebar from '../presentation'
+import { object, func } from 'prop-types'
 import {
 	createGetApiDataAction,
 	createRemoveUrlAction,
@@ -77,8 +78,7 @@ class SidebarContainer extends Component {
 	}
 
 	render() {
-		return (
-			<Aside>
+		return (<Aside>
 				<Sidebar.Search
 					handleChange={this.handleChange}
 					handleSubmit={this.handleSubmit}
@@ -86,10 +86,8 @@ class SidebarContainer extends Component {
 				<Sidebar.History
 					removeUrl={this.props.removeUrl}
 					selectUrl={this.props.selectUrl}
-					urlHistory={this.urlHistory} 
-				/>
-			</Aside> 
-		)
+					urlHistory={this.urlHistory} />
+			</Aside>)
 	}
 }
 
@@ -105,5 +103,12 @@ const mapDispatch = dispatch => ({
 	removeUrl: url => dispatch(createRemoveUrlAction(url)),
 	selectUrl: url => dispatch(createSelectUrlAction(url))
 })
+
+SidebarContainer.propTypes = {
+	urls: object,
+	getUrlData: func,
+	removeUrl: func,
+	selectUrl: func
+}
 
 export default withRouter(connect(mapState, mapDispatch)(SidebarContainer))

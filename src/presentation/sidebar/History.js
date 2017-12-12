@@ -20,7 +20,7 @@ const History = props => (
 )
 
 History.propTypes = {
-	urlHistory: array
+  urlHistory: array
 }
 
 const HistoryListItem = styled.li`
